@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhoAmI</title>
+</head>
+
+    <style>
+        body {
+            margin: 0 auto;
+            text-align: center;
+        }
+        body h3 {
+            background-color: blueviolet;
+            padding: 20px;
+            color: wheat;
+            text-transform: capitalize;
+            font-size: 30px;
+        }
+        body h4 {
+            margin-top: 30px;
+            background-color: blueviolet;
+            padding: 20px;
+            color: wheat;
+            text-transform: capitalize;
+            font-size: 30px;
+        }
+        body h5 {
+            margin-top: 30px;
+            background-color: blueviolet;
+            padding: 20px;
+            color: wheat;
+            text-transform: capitalize;
+            font-size: 30px;
+        }
+    </style>
+
+<body>
+
+    <h3 id="names"></h3>
+    <h4 id="email"></h4>
+    <h5 id="phone"></h5>
+
+    <script>
+        fetch('https://randomuser.me/api')
+        .then (resp => resp.json())
+        .then(data => {
+            const user = data.results[0];
+            const name = user.name;
+            const email = user.email;
+            const phone = user.phone;
+            const userName = `${name.title} ${name.first} ${name.last}`
+            const userEmail = `${user.email}`
+            const userPhone = `${user.phone}`
+            document.getElementById('names').innerText = userName;
+            document.getElementById('email').innerText = userEmail;
+            document.getElementById('phone').innerText = userPhone;
+        })
+        
+    </script>
+    
+</body>
+</html>

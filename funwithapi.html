@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunWithAPI</title>
+</head>
+<style>
+    body {
+        margin: 0 auto;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body h1 {
+        background-color: blueviolet;
+        padding: 20px;
+        color: white;
+        text-transform: capitalize;
+        font-size: 30px;
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    body h3 {
+        margin-top: 30px;
+        background-color: rgb(61, 214, 41);
+        padding: 20px;
+        color: white;
+        text-transform: capitalize;
+        font-size: 30px;
+    }
+    body a {
+        list-style-type: none;
+        text-decoration: none;
+    }
+</style>
+<body>
+    
+    <h1 id="activity"></h1>
+    <h3>Check out the link :<a href=""> Click Here</a></h3>
+
+
+    <script>
+
+        function Task(){
+            fetch('http://www.boredapi.com/api/activity/')
+            .then (res => res.json())
+            .then(data => {
+            document.getElementById('activity').innerText = data.activity;
+            })
+        }
+        Task();
+
+        setInterval(() => {
+            Task();
+        }, 5000)
+
+    </script>
+</body>
+</html>
